@@ -8,14 +8,19 @@
         
         
         
-            <% for (var i=0; i<newlistitem.length; i++){%>
-                <div class="item">
-                    <input type="checkbox">
-                    <p><%=newlistitem[i]%></p>
-                </div>
+            <%newlistitem.forEach(function (ele) {%>
+                <form action="/delete" method="post">
+                    <div class="item">
+                        <input type="checkbox" name="checkbox"onChange="this.form.submit()" value=<%=ele._id%>>
+                        <p><%=ele.name%></p>
+                    </div> 
+                    <input type="hidden" name="listName" value=<%=kindofday%>> </form></input>   
+
+                </form>
+                
                 
     
-            <%}%>
+            <%})%>
 
             <form class="item" action="/" method="post">
                 <input type="text" name="newItem" placeholder="New task" autocomplete="off" >
